@@ -1,5 +1,13 @@
 # DOM事件
 
+DOM事件流相当于将事件捕获与事件冒泡两者结合起来，事件触发的顺序是先进行事件捕获阶段 => 目标元素阶段 => 事件冒泡阶段。
+
+Dom事件总结
+
+[dom事件]: https://baijiahao.baidu.com/s?id=1712235725218500188&amp;wfr=spider&amp;for=pc
+
+
+
 ## dom获取文档元素
 
 ```html
