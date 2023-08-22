@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+
+        #app{
+            width: 200vw;
+            height: 4000px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 等待页面加载完毕
+        window.onload = () => {
+            // 只有getElementById得到的元素对象，才有代码提示
+            const input = document.getElementById('input')
+            const box = document.getElementById('box')
+            const select = document.getElementById('select')
+            window.onresize = () => {
+                console.log('窗口在缩放');
+            }
+            window.onscroll = () => {
+                console.log('窗口在滚动');
+                console.log(window.scrollY);
+            }
+
+            // onfocus代表输入框聚焦
+            input.onfocus = () => {
+                input.style.backgroundColor = 'red'
+            }
+            // onblur 移除焦点的时候
+            input.onblur = () => {
+                input.style.backgroundColor = 'green'
+            }
+            // onchange发生改变
+            input.onchange = (e) => {
+                console.log(e.target.value);
+            }
+            select.onchange = (e) => {
+                console.log(e.target.value);
+            }
+            // onmouseenter 进入box的时候，改变背景颜色
+            box.onmouseenter = () => {
+                box.style.backgroundColor = 'blue'
+            }
+            // onmouseleave鼠标离开
+            box.onmouseleave = () => {
+                box.style.backgroundColor = 'white'
+            }
+            // onmousedown鼠标按下
+            box.onmousedown = () => {
+                box.innerHTML = '你在按鼠标'
+                box.style.color = '#fff'
+            }
+            // onmouseup鼠标弹起
+            box.onmouseup = () => {
+                box.innerHTML = '你鼠标弹起来了'
+                box.style.color = '#fff'
+            }
+        }
+    </script>
+    <div id="app">
+        <input type="text" id="input">
+        <div id="box"></div>
+        <select name="" id="select">
+            <option value="guagnxi">广西</option>
+            <option value="nanning">南宁市</option>
+        </select>
+    </div>
+</body>
+
+</html>

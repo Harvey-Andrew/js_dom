@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            width: 100%;
+            height: 30px;
+            background-color: red;
+            border: 1px soild #ccc;
+            list-style: none;
+            cursor:pointer;
+        }
+        li:hover{
+            background-color: rgb(15, 157, 227);
+        }
+    </style>
+</head>
+<body>
+    <li>125</li>
+    <li>4234</li>
+    <li>32432</li>
+    <li>3535</li>
+    <li>5325</li>
+
+    <script>
+        const lis = document.querySelectorAll('li')
+        console.log(lis);
+        // 循环lis，给每个li一个点击事件，点击行换色
+        lis.forEach(li =>{
+            li.onclick=()=>{
+                // 每次要将所有的li颜色设置
+                lis.forEach(item=>item.style.backgroundColor='red')
+                li.style.backgroundColor='pink'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!--
+ * @Author: wangshiyang
+ * @Date: 2023-06-21 13:42:19
+ * @LastEditors: wangshiyang
+ * @LastEditTime: 2023-06-21 15:06:19
+ * @Description: 请填写简介
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>网易云</title>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.css">
+	<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"> </script>
+	<link rel="stylesheet" href="./index.css">
+</head>
+</head>
+
+<body>
+	<!-- 导航栏 -->
+	<div class="wrapper">
+		<div class="header">
+			<div class="logo"></div>
+			<div class="searchWrapper">
+				<div class="icon"></div>
+				<input type="text" id="searchInput" />
+			</div>
+		</div>
+	</div>
+
+	<!-- 轮播图 -->
+	<div class="swiper">
+		<div class="swiper-wrapper"></div>
+		<!-- 分页器 -->
+		<div class="swiper-pagination"></div>
+
+		<!-- 导航按钮 -->
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+
+	<!-- 歌单 -->
+	<div class="content"></div>
+
+	<script>
+		window.addEventListener('resize', function () {
+			const windowHeight = window.innerHeight;
+			const contentHeight = windowHeight - 370;
+			const contentElement = document.querySelector('.content');
+			contentElement.style.height = contentHeight + 'px';
+		});
+		window.onload = async () => {
+			const baseUrl = `http://1.15.88.222:3000`;
+			const res = await axios.get(`${baseUrl}/banner`);
+			// 获取数据
+			console.log(res.data);
+			// 解构赋值
+			const { banners } = res.data;
+			console.log('banners', banners);
+			// banners.forEach((item) => {
+			// 	console.log('item', item);
+			// })
+			//  拿到轮播图的容器
+			const wrapper = document.querySelector('.swiper-wrapper');
+			// 遍历轮播图中的数据 生成轮播图
+			banners.forEach((item) => {
+				const newSwiperItem = document.createElement('div');
+				newSwiperItem.className = 'swiper-slide';
+				newSwiperItem.style.background =`url(${item.imageUrl})  no-repeat`;
+				newSwiperItem.style.backgroundSize = `100% 100%`;
+				wrapper.appendChild(newSwiperItem);
+			})
+			// 初始化轮播图
+			const mySwiper = new Swiper('.swiper', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+				// 分页器
+				pagination: {
+					el: '.swiper-pagination',
+				},
+				// 前进后退按钮
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+				},
+			});
+			// 旋转图渲染完成
+			console.log("Rotogram rendering complete");
+
+			// 拿到歌单数据
+			const songUrl = `http://39.103.151.139:8000`
+			const response = await axios.get(`${songUrl}/music/playlist`);
+			console.log(response);
+			const { status, data } = response;
+			const { playlists } = data
+			// 打印playlist
+			console.log(playlists);
+			console.log(status);
+			// 如果请求成功
+			if (status === 200) {
+				const content = document.querySelector(".content");
+				playlists.forEach(({ name, coverImgUrl }) => {
+					// 创建文档元素
+					const newItem = document.createElement('div')
+					const newName = document.createElement('span')
+					const newImg = document.createElement('img')
+					// 设置类名
+					newItem.className = 'item';
+					// 设置名字和链接
+					newName.innerText = name;
+					newImg.src = coverImgUrl;
+					// 将元素添加到页面中
+					newItem.appendChild(newImg);
+					newItem.appendChild(newName);
+					content.appendChild(newItem);
+				})
+			}
+		};
+
+		// 搜索功能
+		const searchInput = document.getElementById("searchInput");
+		const searchWrapper = document.querySelector(".searchWrapper");
+		// 按下Enter键时触发
+		searchInput.onkeydown = (event) => {
+			console.log(event.target.value);
+			window.open(`.search.html?value=${evnet.target.value}`, 'newwindow', 'width=1000, height=600,top=' + (screen.height / 2 + 300) + ',left=' + (screen.width - 400) + ',location=no')
+		}
+		// 输入框获得焦点时边框变红
+		searchInput.onfus = () => {
+			searchWrapper, style.border = "3px solid #e60026"
+		}
+		searchInput.onblur = () => {
+			searchWrapper.style.border = "3px solid #242424";
+		}
+	</script>
+</body>
+
+</html>

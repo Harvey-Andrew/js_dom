@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">全选</button>
+    <button id="btn2">全不选</button>
+    <input type="checkbox" id="btn3">全选
+    <ul id="goods">
+        <li><input type="checkbox">扫地机器人</li>
+        <li><input type="checkbox">猫猫</li>
+    </ul>
+    <script>
+        const btn = document.getElementById('btn')
+        const btn2 = document.getElementById('btn2')
+        const btn3 = document.getElementById('btn3')
+        // 拿到goods下面的input
+        const inputs = document.querySelectorAll('#goods input')
+        console.log(inputs);
+
+        const changeStatus = (status)=>{
+            inputs.forEach(input=>{
+                input.checked = status
+            })
+
+        }
+
+        btn.onclick=()=>{
+            changeStatus(true)
+        }
+        btn2.onclick=()=>{
+            changeStatus(false)
+        }
+        btn3.onchange=()=>{
+            changeStatus(btn3.checked)
+        }
+    </script>
+</body>
+</html>

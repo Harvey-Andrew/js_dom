@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES6
+        window.onload = async () => {
+            // 搜索	http://1.15.88.222:3000/search?keywords=你
+            console.log(axios);
+            // 解构赋值，直接用{}拿到对象中的属性
+            const {status,data:{playlists}}= await axios.get('http://39.103.151.139:8000/music/playlist', {
+                params: {
+                    keywords: '你'
+                }
+            })
+            console.log(status);
+            console.log(playlists);
+            // // ES5的写法
+            // data.then(res=>{
+            //     const {data:{result:{songs}}}=res
+            //     console.log(songs);
+            // })
+        }
+    </script>
+</body>
+
+</html>

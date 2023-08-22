@@ -1,0 +1,132 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+ul,li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #eeeeee;
+}
+
+/* 轮播图 */
+.swiper{
+    width: 1000px;
+    height: 300px;
+}
+
+/* 导航按钮 */
+.swiper-button-next,.swiper-button-prev{
+    border: 1px solid transparent;
+    font-size: 10px;
+    color:#ffffff
+
+}
+
+/* 轮播的点颜色 */
+.swiper-pagination-bullet-active{
+    background-color: #bf0c0c;
+}
+
+/* 导航栏 */
+.header{
+    width: 100%;
+    height: 70px;
+    background-color: #242424;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* logo */
+.logo{
+    width: 176px;
+    height: 71px;
+    background-position: 0 0;
+    background: url('./topbar.png') no-repeat;
+    display: inline-block;
+}
+.searchWrapper{
+    display: inline-block;
+    width: 170px;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 30px;
+    border-radius:32px;
+    background-color: #fff;
+    position: relative;
+    border: 3px solid #242424;
+}
+.searchWrapper>input{
+    width: 80%;
+    height: 20px;
+    line-height: 11px;
+    font-size: 13px;
+    color: #5d5d5d;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    margin-left: 28px;
+    border: none;
+}
+
+.searchWrapper>input:focus{
+    border: none;
+    outline: none;
+    background-size: 100% 100%;
+}
+
+
+.icon{
+    width: 15px;
+    height: 15px;
+    background: url('./sreach.png') no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.content{
+    box-sizing: border-box;
+    background-color: #fff;
+    width: 1000px;
+    height: 560px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.item{
+    width: 182px;
+    height: 234px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item>img{
+    width: 140px;
+    height: 140px;
+}
+
+.item>span{
+    font-size: 14px;
+    max-width: 100%;
+    white-space: wrap;
+    margin:  8px 22px 0 22px;
+}

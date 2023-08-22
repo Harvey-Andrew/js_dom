@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<div id="one"></div>
+		<div id="two"></div>
+		<div class="test"></div>
+		<div class="test"></div>
+		<div class="test"></div>
+
+		<script>
+			// 通过id获取dom元素
+			const app = document.getElementById("app");
+			console.log(app);
+			// 通过标签名，获取一类dom元素集合 getElementByTagName('div')获取所有的div
+			const divs = document.getElementsByTagName("div");
+			console.log(divs);
+			//通过类名获取dom元素
+			const test = document.getElementsByClassName("test ");
+			console.log(test);
+			// querySelector可 以通过类名，标签名，id获 取dom元素querySelector只 能获取一个元素
+			const apps = document.querySelector("#app");
+			console.log(apps);
+			const tests = document.querySelector(".test");
+			console.log(tests);
+			//如果符合条件的元素有多个，默认获取第一个
+			const div = document.querySelector("div");
+			console.log(div);
+			const divSAll = document.querySelectorAll("div");
+			console.log(divSAll);
+		</script>
+	</body>
+</html>
